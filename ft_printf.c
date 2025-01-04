@@ -6,7 +6,7 @@
 /*   By: zsalih <zsalih@student.42abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 20:39:04 by zsalih            #+#    #+#             */
-/*   Updated: 2025/01/02 20:39:06 by zsalih           ###   ########.fr       */
+/*   Updated: 2025/01/03 20:44:36 by zsalih           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	set_flag(const char *format, int *i, t_format *fmt)
 	else if (format[*i] == ' ')
 		fmt->flag_space = 1;
 }
-int	parse_format(const char *format, int *i, t_format *fmt)
+void	parse_format(const char *format, int *i, t_format *fmt)
 {
 	(*i)++;
 	while (format[*i] == '-' || format[*i] == '+' || format[*i] == ' '
@@ -93,7 +93,9 @@ int	check_spec(const char *format, va_list args, int *i, t_format *fmt)
 		(*i) += 2;
 		return (count);
 	}
-	count += parse_format(format, i, fmt);
+	parse_format(format, i, fmt);
+	if (!format[*i]) // in case we reach the NULL;
+		return (0);
 	fmt->specifier = format[*i];
 	assign_f(fmt);
 	if (fmt->f)
@@ -102,10 +104,8 @@ int	check_spec(const char *format, va_list args, int *i, t_format *fmt)
 		(*i)++;
 		return (count);
 	}
-	if (format[*i] == '%' && format[*i + 1])
-		count += write(1, &format[(*i)++], 1);
-	else
-		(*i)++;
+	if (format[*i])
+		count += write(1, &format[(*i) - 1], 1);
 	return (count);
 }
 int	ft_printf(const char *format, ...)

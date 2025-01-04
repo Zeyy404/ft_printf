@@ -3,7 +3,7 @@
 
 int main()
 {
-    printf("|%d|", INT_MIN);
+    printf("%6.5d", 42);
     // printf("\n");
     // printf("%d", ft_printf("%s", "Hello  "));
     // printf("\n");

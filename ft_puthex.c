@@ -6,12 +6,45 @@
 /*   By: zsalih <zsalih@student.42abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 20:38:58 by zsalih            #+#    #+#             */
-/*   Updated: 2025/01/02 20:39:00 by zsalih           ###   ########.fr       */
+/*   Updated: 2025/01/04 12:20:11 by zsalih           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
+int	printhex(char *buffer, int len, t_format *fmt)
+{
+	int	count;
+
+	count = 0;
+	if (fmt->width || fmt->precision)
+	{
+		if (fmt->flag_minus)
+		{
+			if (fmt->precision)
+				count += ft_precision_nbr(len, fmt);
+			while (--len >= 0)
+				count += write(1, &buffer[len], 1);
+			if (fmt->width > (fmt->precision + len))
+				count += ft_putpad((fmt->width - (fmt->precision + len)), ' ');
+		}
+		else
+		{
+			if (fmt->width > (fmt->precision + len))
+				count += ft_putpad((fmt->width - (fmt->precision + len)), ' ');
+			if (fmt->precision)
+				count += ft_precision_nbr(len, fmt);
+			while (--len >= 0)
+				count += write(1, &buffer[len], 1);
+		}
+	}
+	else
+	{
+		while (--len >= 0)
+			count += write(1, &buffer[len], 1);
+	}
+	return (count);
+}
 int ft_puthex(va_list args, t_format *fmt)
 {
     unsigned int n;
@@ -36,8 +69,6 @@ int ft_puthex(va_list args, t_format *fmt)
             buffer[len++] = remainder - 10 + 'A';
         n /= 16;
     }
-    while (--len >= 0)
-        count += write(1, &buffer[len], 1);
-
+	count = printhex(buffer, len, fmt);
     return (count);
 }
