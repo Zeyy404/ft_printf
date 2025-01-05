@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_puthex.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zsalih <zsalih@student.42abudhabi.ae>      +#+  +:+       +#+        */
+/*   By: zsalih < zsalih@student.42abudhabi.ae>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 20:38:58 by zsalih            #+#    #+#             */
-/*   Updated: 2025/01/04 12:20:11 by zsalih           ###   ########.fr       */
+/*   Updated: 2025/01/06 00:09:35 by zsalih           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,60 +15,54 @@
 int	printhex(char *buffer, int len, t_format *fmt)
 {
 	int	count;
+	int pad_width;
 
 	count = 0;
-	if (fmt->width || fmt->precision)
-	{
-		if (fmt->flag_minus)
-		{
-			if (fmt->precision)
-				count += ft_precision_nbr(len, fmt);
-			while (--len >= 0)
-				count += write(1, &buffer[len], 1);
-			if (fmt->width > (fmt->precision + len))
-				count += ft_putpad((fmt->width - (fmt->precision + len)), ' ');
-		}
-		else
-		{
-			if (fmt->width > (fmt->precision + len))
-				count += ft_putpad((fmt->width - (fmt->precision + len)), ' ');
-			if (fmt->precision)
-				count += ft_precision_nbr(len, fmt);
-			while (--len >= 0)
-				count += write(1, &buffer[len], 1);
-		}
-	}
+	if (fmt->precision > len)
+    	pad_width = fmt->width - fmt->precision;
 	else
-	{
-		while (--len >= 0)
-			count += write(1, &buffer[len], 1);
-	}
-	return (count);
+    	pad_width = fmt->width - len;
+	if (pad_width < 0)
+		pad_width = 0;
+	if (!fmt->flag_minus)
+        count += ft_putpad(pad_width, ' ');
+    if (fmt->precision > len)
+        count += ft_putpad(fmt->precision - len, '0');
+	if (fmt->flag_hash && fmt->specifier == 'x')
+		count += write(1, "0x", 2);
+	else if (fmt->flag_hash && fmt->specifier == 'X')
+		count += write(1, "0X", 2);
+  	while (--len >= 0)
+    	count += write(1, &buffer[len], 1);
+	if (fmt->flag_minus)
+        count += ft_putpad(pad_width, ' ');
+    return (count);
 }
 int ft_puthex(va_list args, t_format *fmt)
 {
     unsigned int n;
-    int count;
     char buffer[16];
     int len;
     int remainder;
 
     n = va_arg(args, unsigned int);
     if (n == 0)
-        return (write(1, "0", 1));
-    count = 0;
-    len = 0;
+	{
+		if (fmt->precision != 0)
+        	return (write(1, "0", 1));
+		return (0);
+	}
+	len = 0;
     while (n > 0)
     {
         remainder = n % 16;
         if (remainder < 10)
             buffer[len++] = remainder + '0';
-        else if (remainder > 10 && fmt->specifier == 'x')
+        else if (fmt->specifier == 'x')
             buffer[len++] = remainder - 10 + 'a';
-        else if (remainder > 10 && fmt->specifier == 'X')
+        else if (fmt->specifier == 'X')
             buffer[len++] = remainder - 10 + 'A';
         n /= 16;
     }
-	count = printhex(buffer, len, fmt);
-    return (count);
+    return (printhex(buffer, len, fmt));
 }

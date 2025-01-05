@@ -3,7 +3,7 @@
 
 int main()
 {
-    printf("%6.5d", 42);
+    printf("%.x", 0);
     // printf("\n");
     // printf("%d", ft_printf("%s", "Hello  "));
     // printf("\n");
