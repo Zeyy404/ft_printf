@@ -6,13 +6,13 @@
 /*   By: zsalih < zsalih@student.42abudhabi.ae>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 20:38:58 by zsalih            #+#    #+#             */
-/*   Updated: 2025/01/06 00:26:49 by zsalih           ###   ########.fr       */
+/*   Updated: 2025/01/06 00:58:48 by zsalih           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int ft_calcpad_width (int len, t_format *fmt)
+int ft_calcpad_width(int len, t_format *fmt)
 {
 	int pad_width;
 

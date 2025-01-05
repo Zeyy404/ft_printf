@@ -3,7 +3,7 @@
 
 int main()
 {
-    printf("%#05x", 5);
+    printf("%-9.9s", "hello");
     // printf("\n");
     // printf("%d", ft_printf("%s", "Hello  "));
     // printf("\n");

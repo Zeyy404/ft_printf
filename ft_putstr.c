@@ -3,44 +3,48 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zsalih <zsalih@student.42abudhabi.ae>      +#+  +:+       +#+        */
+/*   By: zsalih < zsalih@student.42abudhabi.ae>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 20:39:48 by zsalih            #+#    #+#             */
-/*   Updated: 2025/01/02 20:40:00 by zsalih           ###   ########.fr       */
+/*   Updated: 2025/01/06 00:58:42 by zsalih           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
+int ft_calcpad_width(int len, t_format *fmt)
+{
+	int pad_width;
+
+	if (fmt->precision > len)
+    	pad_width = fmt->width - fmt->precision;
+	else
+    	pad_width = fmt->width - len;
+	if (pad_width < 0)
+		pad_width = 0;
+	return (pad_width);
+}
+
 int	ft_putstr(va_list args, t_format *fmt)
 {
 	int		count;
 	char	*str;
-	int		pad;
+	int		pad_width;
+	int		precision;
 
 	str = va_arg(args, char *);
 	count = 0;
 	if (!str)
 		str = "(null)";
-	if (fmt->width > 1)
-		pad = fmt->width - 1;
+	if (fmt->precision > 0 && fmt->precision < ft_strlen(str))
+		precision = fmt->precision;
 	else
-		pad = 0;
-	if (fmt->precision > 0)
-		count = fmt->precision;
+		precision = ft_strlen(str);
+	pad_width = ft_calcpad_width(precision, fmt);
+	if (!fmt->flag_minus)
+		ft_putpad(pad_width, ' ');
+	count += write(1, str, precision);
 	if (fmt->flag_minus)
-	{
-		while (str[count])
-			write(1, &str[count++], 1);
-		while (pad-- > 0)
-			count += write(1, " ", 1);
-	}
-	else
-	{
-		while (pad-- > 0)
-			count += write(1, " ", 1);
-		while (str[count])
-			write(1, &str[count++], 1);
-	}
+		ft_putpad(pad_width, ' ');
 	return (count);
 }
