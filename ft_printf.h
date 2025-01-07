@@ -6,7 +6,7 @@
 /*   By: zsalih <zsalih@student.42abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 20:39:15 by zsalih            #+#    #+#             */
-/*   Updated: 2025/01/02 20:39:22 by zsalih           ###   ########.fr       */
+/*   Updated: 2025/01/07 15:58:47 by zsalih           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,16 @@ int			ft_putptr(va_list args, t_format *fmt);
 int			ft_putint(va_list args, t_format *fmt);
 int			ft_putuint(va_list args, t_format *fmt);
 int			ft_puthex(va_list args, t_format *fmt);
-int			ft_putuphex(va_list args, t_format *fmt);
-int			ft_putpct(va_list args, t_format *fmt);
+int			parse_format(const char *format, va_list args, int *i,
+				t_format *fmt);
+void		check_flags(const char *format, int *i, t_format *fmt);
+void		set_flag(const char *format, int *i, t_format *fmt);
+void		assign_f(t_format *fmt);
+void		init_format(t_format *fmt);
+int			ft_putpad(int count, char padchr);
+int			ft_calcpad_width(int len, t_format *fmt);
+int			ft_isdigit(int c);
+int			ft_atoi(const char *nptr);
+size_t		ft_strlen(const char *s);
 
 #endif

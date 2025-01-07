@@ -1,33 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchr.c                                        :+:      :+:    :+:   */
+/*   ft_putpad.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zsalih <zsalih@student.42abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/02 20:39:33 by zsalih            #+#    #+#             */
-/*   Updated: 2025/01/07 14:56:18 by zsalih           ###   ########.fr       */
+/*   Created: 2025/01/07 15:51:02 by zsalih            #+#    #+#             */
+/*   Updated: 2025/01/07 15:52:14 by zsalih           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putchr(va_list args, t_format *fmt)
+int	ft_putpad(int count, char padchr)
 {
-	char	c;
-	int		count;
-	int		pad_width;
+	int	i;
 
-	c = (char)va_arg(args, int);
-	if (fmt->width > 1)
-		pad_width = fmt->width - 1;
+	i = 0;
+	while (i < count)
+	{
+		write(1, &padchr, 1);
+		i++;
+	}
+	return (i);
+}
+
+int	ft_calcpad_width(int len, t_format *fmt)
+{
+	int	pad_width;
+
+	if (fmt->precision > len)
+		pad_width = fmt->width - fmt->precision;
 	else
+		pad_width = fmt->width - len;
+	if (pad_width < 0)
 		pad_width = 0;
-	count = 0;
-	if (!fmt->flag_minus)
-		count += ft_putpad(pad_width, ' ');
-	count += write(1, &c, 1);
-	if (fmt->flag_minus)
-		count += ft_putpad(pad_width, ' ');
-	return (count);
+	return (pad_width);
 }
