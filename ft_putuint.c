@@ -6,7 +6,7 @@
 /*   By: zsalih <zsalih@student.42abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 20:40:25 by zsalih            #+#    #+#             */
-/*   Updated: 2025/01/07 15:50:18 by zsalih           ###   ########.fr       */
+/*   Updated: 2025/01/07 18:11:49 by zsalih           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	ft_putuint(va_list args, t_format *fmt)
 	{
 		if (fmt->precision == 0)
 			return (0);
-		return (ft_putpad(fmt->width, ' '));
+		return (printuint("0", 1, fmt));
 	}
 	len = 0;
 	while (num > 0)

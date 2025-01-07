@@ -2,7 +2,7 @@ CC:= cc
 CFLAGS:= -Wall -Wextra -Werror
 SRCS:= ft_printf.c ft_putint.c ft_putuint.c ft_putchr.c \
 		ft_putstr.c ft_puthex.c ft_putptr.c \
-		uitil_printf.c uitil_libft.c uitil_flags.c
+		util_printf.c util_libft.c util_flags.c
 OBJS:= $(SRCS:.c=.o)
 
 HEADER = ft_printf.h

@@ -6,7 +6,7 @@
 /*   By: zsalih <zsalih@student.42abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 20:40:11 by zsalih            #+#    #+#             */
-/*   Updated: 2025/01/07 15:50:26 by zsalih           ###   ########.fr       */
+/*   Updated: 2025/01/07 18:18:52 by zsalih           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	ft_putptr(va_list args, t_format *fmt)
 
 	ptr = (unsigned long)va_arg(args, void *);
 	if (ptr == 0)
-		return (write(1, "(nil)", 5));
+		return (write(1, "0x0", 3));
 	count = write(1, "0x", 2);
 	len = 0;
 	while (ptr > 0)

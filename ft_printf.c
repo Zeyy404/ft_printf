@@ -6,7 +6,7 @@
 /*   By: zsalih <zsalih@student.42abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 20:39:04 by zsalih            #+#    #+#             */
-/*   Updated: 2025/01/07 15:54:16 by zsalih           ###   ########.fr       */
+/*   Updated: 2025/01/07 19:23:20 by zsalih           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@ int	ft_printf(const char *format, ...)
 	fmt = malloc(sizeof(t_format));
 	if (!fmt)
 		return (-1);
-	init_format(fmt);
 	va_start(args, format);
 	i = 0;
 	count = 0;
 	while (format[i])
 	{
+		init_format(fmt);
 		if (format[i] == '%')
 			count += parse_format(format, args, &i, fmt);
 		else

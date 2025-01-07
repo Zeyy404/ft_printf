@@ -6,7 +6,7 @@
 /*   By: zsalih <zsalih@student.42abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 20:39:15 by zsalih            #+#    #+#             */
-/*   Updated: 2025/01/07 15:58:47 by zsalih           ###   ########.fr       */
+/*   Updated: 2025/01/07 21:45:22 by zsalih           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,6 @@ int			ft_calcpad_width(int len, t_format *fmt);
 int			ft_isdigit(int c);
 int			ft_atoi(const char *nptr);
 size_t		ft_strlen(const char *s);
+void	*ft_memset(void *s, int c, size_t n);
 
 #endif
