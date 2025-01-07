@@ -6,7 +6,7 @@
 /*   By: zsalih <zsalih@student.42abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 20:40:18 by zsalih            #+#    #+#             */
-/*   Updated: 2025/01/07 22:41:41 by zsalih           ###   ########.fr       */
+/*   Updated: 2025/01/07 22:49:11 by zsalih           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	printint(char *buffer, int len, int is_neg, t_format *fmt)
 		else
 			count += ft_putpad(pad_width, ' ');
 	}
-	if (fmt->flag_plus && buffer[0] != '-' && !fmt->flag_zero)
+	if (fmt->flag_plus && !is_neg && !fmt->flag_zero)
 		count += write(1, "+", 1);
 	else if (fmt->flag_space)
 		count += write(1, " ", 1);
