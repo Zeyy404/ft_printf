@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putpad.c                                        :+:      :+:    :+:   */
+/*   util_flags.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zsalih <zsalih@student.42abudhabi.ae>      +#+  +:+       +#+        */
+/*   By: zsalih < zsalih@student.42abudhabi.ae>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 15:51:02 by zsalih            #+#    #+#             */
-/*   Updated: 2025/01/07 15:52:14 by zsalih           ###   ########.fr       */
+/*   Updated: 2025/01/08 00:08:33 by zsalih           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putpad(int count, char padchr)
+int	putpad(int count, char padchr)
 {
 	int	i;
 
@@ -25,7 +25,7 @@ int	ft_putpad(int count, char padchr)
 	return (i);
 }
 
-int	ft_calcpad_width(int len, t_format *fmt)
+int	set_pad_width(int len, t_format *fmt)
 {
 	int	pad_width;
 

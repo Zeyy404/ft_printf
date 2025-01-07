@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zsalih <zsalih@student.42abudhabi.ae>      +#+  +:+       +#+        */
+/*   By: zsalih < zsalih@student.42abudhabi.ae>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 20:39:15 by zsalih            #+#    #+#             */
-/*   Updated: 2025/01/07 21:45:22 by zsalih           ###   ########.fr       */
+/*   Updated: 2025/01/08 00:10:43 by zsalih           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,10 @@ void		check_flags(const char *format, int *i, t_format *fmt);
 void		set_flag(const char *format, int *i, t_format *fmt);
 void		assign_f(t_format *fmt);
 void		init_format(t_format *fmt);
-int			ft_putpad(int count, char padchr);
-int			ft_calcpad_width(int len, t_format *fmt);
+int			putpad(int count, char padchr);
+int			set_pad_width(int len, t_format *fmt);
 int			ft_isdigit(int c);
 int			ft_atoi(const char *nptr);
 size_t		ft_strlen(const char *s);
-void	*ft_memset(void *s, int c, size_t n);
 
 #endif

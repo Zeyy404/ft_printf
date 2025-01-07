@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putint.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zsalih <zsalih@student.42abudhabi.ae>      +#+  +:+       +#+        */
+/*   By: zsalih < zsalih@student.42abudhabi.ae>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 20:40:18 by zsalih            #+#    #+#             */
-/*   Updated: 2025/01/07 22:49:11 by zsalih           ###   ########.fr       */
+/*   Updated: 2025/01/08 00:09:28 by zsalih           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,34 +18,25 @@ int	printint(char *buffer, int len, int is_neg, t_format *fmt)
 	int	pad_width;
 
 	count = 0;
-	pad_width = ft_calcpad_width(len, fmt);
-	if (fmt->flag_plus || fmt->flag_space)
+	pad_width = set_pad_width(len, fmt);
+	if (fmt->flag_plus || fmt->flag_space || is_neg)
 		pad_width -= 1;
-	if (!fmt->flag_minus)
-	{
-		if (fmt->flag_zero && fmt->precision == -1)
-		{
-			if (is_neg)
-				count += write(1, "-", 1);
-			else if (fmt->flag_plus)
-				count += write(1, "+", 1);
-			count += ft_putpad(pad_width, '0');
-		}
-		else
-			count += ft_putpad(pad_width, ' ');
-	}
-	if (fmt->flag_plus && !is_neg && !fmt->flag_zero)
+	if (!fmt->flag_minus && !(fmt->flag_zero && fmt->precision == -1))
+		count += putpad(pad_width, ' ');
+	if (is_neg)
+		count += write(1, "-", 1);
+	else if (fmt->flag_plus)
 		count += write(1, "+", 1);
 	else if (fmt->flag_space)
 		count += write(1, " ", 1);
+	if (!fmt->flag_minus && fmt->flag_zero && fmt->precision == -1)
+		count += putpad(pad_width, '0');
 	if (fmt->precision > len)
-		count += ft_putpad(fmt->precision - len, '0');
-	if (is_neg)
-		count += write(1, "-", 1);
+		count += putpad(fmt->precision - len, '0');
 	while (--len >= 0)
 		count += write(1, &buffer[len], 1);
 	if (fmt->flag_minus)
-		count += ft_putpad(pad_width, ' ');
+		count += putpad(pad_width, ' ');
 	return (count);
 }
 
@@ -61,7 +52,7 @@ int	ft_putint(va_list args, t_format *fmt)
 	if (num == 0)
 	{
 		if (fmt->precision == 0)
-			return (ft_putpad(ft_calcpad_width(0, fmt), ' '));
+			return (putpad(set_pad_width(0, fmt), ' '));
 		return (printint("0", 1, is_neg, fmt));
 	}
 	if (num < 0)

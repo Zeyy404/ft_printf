@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zsalih <zsalih@student.42abudhabi.ae>      +#+  +:+       +#+        */
+/*   By: zsalih < zsalih@student.42abudhabi.ae>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 20:39:48 by zsalih            #+#    #+#             */
-/*   Updated: 2025/01/07 15:14:46 by zsalih           ###   ########.fr       */
+/*   Updated: 2025/01/08 00:09:00 by zsalih           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,11 @@ int	ft_putstr(va_list args, t_format *fmt)
 		precision = fmt->precision;
 	else
 		precision = ft_strlen(str);
-	pad_width = ft_calcpad_width(precision, fmt);
+	pad_width = set_pad_width(precision, fmt);
 	if (!fmt->flag_minus)
-		ft_putpad(pad_width, ' ');
+		putpad(pad_width, ' ');
 	count += write(1, str, precision);
 	if (fmt->flag_minus)
-		ft_putpad(pad_width, ' ');
+		putpad(pad_width, ' ');
 	return (count);
 }
