@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zsalih < zsalih@student.42abudhabi.ae>     +#+  +:+       +#+        */
+/*   By: zsalih <zsalih@student.42abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 20:39:15 by zsalih            #+#    #+#             */
-/*   Updated: 2025/01/08 00:10:43 by zsalih           ###   ########.fr       */
+/*   Updated: 2025/01/08 14:29:23 by zsalih           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int			ft_putptr(va_list args, t_format *fmt);
 int			ft_putint(va_list args, t_format *fmt);
 int			ft_putuint(va_list args, t_format *fmt);
 int			ft_puthex(va_list args, t_format *fmt);
+int			ft_putpct(t_format *fmt);
 int			parse_format(const char *format, va_list args, int *i,
 				t_format *fmt);
 void		check_flags(const char *format, int *i, t_format *fmt);

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   uitil_printf.c                                     :+:      :+:    :+:   */
+/*   util_printf.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zsalih <zsalih@student.42abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 15:54:06 by zsalih            #+#    #+#             */
-/*   Updated: 2025/01/07 15:54:46 by zsalih           ###   ########.fr       */
+/*   Updated: 2025/01/08 14:37:47 by zsalih           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,15 +91,14 @@ int	parse_format(const char *format, va_list args, int *i, t_format *fmt)
 	int	count;
 
 	count = 0;
-	if (format[*i + 1] == '%')
-	{
-		count += write(1, "%", 1);
-		(*i) += 2;
-		return (count);
-	}
 	check_flags(format, i, fmt);
 	if (!format[*i])
 		return (0);
+	if (format[*i] == '%')
+	{
+		(*i)++;
+		return (ft_putpct(fmt));
+	}
 	fmt->specifier = format[*i];
 	assign_f(fmt);
 	if (fmt->f)

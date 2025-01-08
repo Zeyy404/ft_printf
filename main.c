@@ -3,12 +3,19 @@
 
 int main()
 {
+    // ft_printf("%-5%");
+    // printf("%-5%");
+    printf("%#10.5x", 15);
+    // printf("%d", ft_printf(" %-3s %-3s %-4s %-5s %-3s ", " - ", "", "4", "", "2 "));
+    // ft_printf("%#x", 0);
+    // ft_printf("%7.7s%3.3s", "hello", "world");
+    // ft_printf("%.s", NULL);
     // ft_printf("%+09d", 10000);
     // ft_printf("%p\np%p\n%p\n", (void *)LONG_MAX + 423856, (void *)0, (void *)INT_MAX);
     // printf("%p\np%p\n%p\n", (void *)LONG_MAX + 423856, (void *)0, (void *)INT_MAX);
     // ft_printf("%1s, %1s, %1s, %1s", (char *)NULL, "", "test", "joihwhhgsdkhksdgsdg\t\v\n\r\f\a25252\b6");
-    //printf("%1s, %1s, %1s, %1s", (char *)NULL, "", "test", "joihwhhgsdkhksdgsdg\t\v\n\r\f\a25252\b6");
-    ft_printf("%0+100d, %+100d, %+100d, %+100d, %+100d, %+100d, %+100d, %+100d", 0, 5, -1, -10, 100, -1862, INT_MIN, INT_MAX);
+    // printf("%1s, %1s, %1s, %1s", (char *)NULL, "", "test", "joihwhhgsdkhksdgsdg\t\v\n\r\f\a25252\b6");
+    // ft_printf("%0+100d, %+100d, %+100d, %+100d, %+100d, %+100d, %+100d, %+100d", 0, 5, -1, -10, 100, -1862, INT_MIN, INT_MAX);
     // printf("%0+100d, %+100d, %+100d, %+100d, %+100d, %+100d, %+100d, %+100d", 0, 5, -1, -10, 100, -1862, INT_MIN, INT_MAX);
     // ft_printf("%-9u\n", 0);
     // printf("%-9u", 0);

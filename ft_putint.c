@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putint.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zsalih < zsalih@student.42abudhabi.ae>     +#+  +:+       +#+        */
+/*   By: zsalih <zsalih@student.42abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 20:40:18 by zsalih            #+#    #+#             */
-/*   Updated: 2025/01/08 00:09:28 by zsalih           ###   ########.fr       */
+/*   Updated: 2025/01/08 19:31:48 by zsalih           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	ft_putint(va_list args, t_format *fmt)
 	if (num == 0)
 	{
 		if (fmt->precision == 0)
-			return (putpad(set_pad_width(0, fmt), ' '));
+			return (printint("", 0, is_neg, fmt));
 		return (printint("0", 1, is_neg, fmt));
 	}
 	if (num < 0)
