@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putuint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zsalih < zsalih@student.42abudhabi.ae>     +#+  +:+       +#+        */
+/*   By: zsalih <zsalih@student.42abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 20:40:25 by zsalih            #+#    #+#             */
-/*   Updated: 2025/01/08 00:08:50 by zsalih           ###   ########.fr       */
+/*   Updated: 2025/01/09 13:48:13 by zsalih           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	printuint(char *buffer, int len, t_format *fmt)
+static int	printuint(char *buffer, int len, t_format *fmt)
 {
 	int	count;
 	int	pad_width;

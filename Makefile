@@ -1,5 +1,5 @@
 CC:= cc
-CFLAGS:= -Wall -Wextra -Werror -fsanitize=address
+CFLAGS:= -Wall -Wextra -Werror
 SRCS:= ft_printf.c ft_putint.c ft_putuint.c ft_putchr.c \
 		ft_putstr.c ft_puthex.c ft_putptr.c ft_putpct.c \
 		util_printf.c util_libft.c util_flags.c

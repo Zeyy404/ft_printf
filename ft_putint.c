@@ -6,13 +6,13 @@
 /*   By: zsalih <zsalih@student.42abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 20:40:18 by zsalih            #+#    #+#             */
-/*   Updated: 2025/01/08 19:31:48 by zsalih           ###   ########.fr       */
+/*   Updated: 2025/01/09 13:47:19 by zsalih           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	printint(char *buffer, int len, int is_neg, t_format *fmt)
+static int	printint(char *buffer, int len, int is_neg, t_format *fmt)
 {
 	int	count;
 	int	pad_width;

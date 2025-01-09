@@ -5,7 +5,7 @@ int main()
 {
     // ft_printf("%-5%");
     // printf("%-5%");
-    printf("%#10.5x", 15);
+    ft_printf("%k", 0x1234);
     // printf("%d", ft_printf(" %-3s %-3s %-4s %-5s %-3s ", " - ", "", "4", "", "2 "));
     // ft_printf("%#x", 0);
     // ft_printf("%7.7s%3.3s", "hello", "world");

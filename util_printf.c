@@ -6,7 +6,7 @@
 /*   By: zsalih <zsalih@student.42abudhabi.ae>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 15:54:06 by zsalih            #+#    #+#             */
-/*   Updated: 2025/01/08 14:37:47 by zsalih           ###   ########.fr       */
+/*   Updated: 2025/01/09 14:18:54 by zsalih           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,11 +103,10 @@ int	parse_format(const char *format, va_list args, int *i, t_format *fmt)
 	assign_f(fmt);
 	if (fmt->f)
 	{
-		count += fmt->f(args, fmt);
 		(*i)++;
-		return (count);
+		return (fmt->f(args, fmt));
 	}
 	if (format[*i])
-		count += write(1, &format[(*i) - 1], 1);
+		count += write(1, &format[*i], 1);
 	return (count);
 }
