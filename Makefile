@@ -30,4 +30,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: re fclean clean all bonus
+.PHONY: re fclean clean all bonus debug
